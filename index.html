@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suki Cai — Software Engineer</title>
+<meta name="description" content="Yufei (Suki) Cai — Software Engineer at Munich Re. Notes on systems, architecture, and AI-assisted engineering." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="noise"></div>
+
+<header class="hero" id="top">
+  <nav class="nav">
+    <span class="nav-name">Suki Cai</span>
+    <div class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#writing">Writing</a>
+      <a href="#contact">Contact</a>
+      <a href="resume-suki-cai.pdf" class="nav-resume">Résumé</a>
+    </div>
+  </nav>
+
+  <div class="hero-content reveal">
+    <p class="eyebrow">Software Engineer</p>
+    <h1>Yufei (Suki) Cai</h1>
+    <p class="hero-sub">
+      I build backend systems and rebuild the ones that stopped working.
+      Currently at <strong>Munich Re</strong> in New York, finishing an M.S. in Software
+      Engineering at <strong>UC Berkeley</strong>.
+    </p>
+    <p class="hero-highlight">
+      Rebuilt a core enterprise underwriting platform end-to-end in <strong>2 months</strong>,
+      replacing a system that took a 15-engineer contractor team roughly <strong>3 years</strong> to build.
+    </p>
+    <div class="hero-links">
+      <a href="https://github.com/SukiCai" target="_blank" rel="noopener">GitHub ↗</a>
+      <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a href="mailto:yufeicaimail@gmail.com">Email</a>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="section" id="about">
+  <div class="section-inner reveal">
+    <p class="section-label">About</p>
+    <p class="about-text">
+      I like systems with clear ownership boundaries and code that survives contact with real users.
+      Most of my work has been in insurance and financial infrastructure &mdash; multi-tenant platforms,
+      background job systems, and the unglamorous plumbing that keeps enterprise software honest under load.
+      Lately I've been building with AI-assisted workflows (Claude Code, MCP) to move faster without giving up
+      architectural ownership &mdash; the tools write more code, I still make the decisions.
+    </p>
+  </div>
+</section>
+
+<section class="section" id="work">
+  <div class="section-inner">
+    <p class="section-label reveal">Selected Work</p>
+
+    <article class="work-item reveal">
+      <div class="work-head">
+        <h3>Underwriting Platform Rebuild</h3>
+        <span class="work-meta">Munich Re · 2024&ndash;present</span>
+      </div>
+      <p class="work-stack">FastAPI &middot; PostgreSQL &middot; React / Next.js &middot; Kubernetes</p>
+      <p class="work-desc">
+        The existing workbench &mdash; built by an external contractor team over ~3 years &mdash; had
+        accumulated thousands of open bugs and a frontend our team didn't even own. I led the rebuild:
+        ran discovery directly with underwriters and their engineering leads, shipped a working POC in a
+        week to validate direction before committing months to it, and scoped the rebuild to preserve
+        existing carrier workflows rather than forcing a retraining cycle. Shipped in 2 months.
+        Read the architecture decision behind it below &rarr;
+      </p>
+      <p class="work-result">Helped double enterprise client adoption &middot; $3,000 Spot Bonus, SVP of Digital Solutions</p>
+    </article>
+
+    <article class="work-item reveal">
+      <div class="work-head">
+        <h3>Genomic Research Platform</h3>
+        <span class="work-meta">Sponsored by Broad Institute &middot; 2026</span>
+      </div>
+      <p class="work-stack">FastAPI &middot; Next.js &middot; D3.js &middot; Web Workers</p>
+      <p class="work-desc">
+        Async pipelines and interactive visualizations for multi-GB genomic datasets. Chunked processing
+        and Web Workers keep the UI thread responsive while rendering 1M+ data points.
+      </p>
+    </article>
+
+    <article class="work-item reveal">
+      <div class="work-head">
+        <h3>Serverless E-commerce Platform</h3>
+        <span class="work-meta">Sponsored by Amazon &middot; 2023</span>
+      </div>
+      <p class="work-stack">Lambda &middot; DynamoDB &middot; Cognito</p>
+      <p class="work-desc">
+        Led an 8-person team building an event-driven serverless architecture designed to absorb burst
+        traffic without over-provisioning.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="writing">
+  <div class="section-inner reveal">
+    <p class="section-label">Writing</p>
+
+    <article class="post">
+      <h3>Source of truth should follow domain boundaries, not service convenience</h3>
+      <p class="post-meta">Notes from the Munich Re platform rebuild</p>
+
+      <p>
+        When we rebuilt the underwriting workbench, the original assumption was that our
+        case-management service &mdash; the thing that owns the lifecycle and state of an underwriting
+        case &mdash; should also be the single source of truth for everything a case touches, including
+        the client-specific schema and interview workflow that drives it.
+      </p>
+      <p>
+        That assumption was quietly responsible for an entire category of bugs. The rules engine, not
+        case management, was the system that actually owned each client's configurable schema and
+        workflow definitions &mdash; and those could evolve independently. Copying that knowledge into
+        case management meant the two services could, and eventually did, disagree with each other.
+      </p>
+      <p>
+        The fix wasn't a patch. It was defining source-of-truth boundaries by domain instead of by
+        convenience: the rules engine became authoritative for schema and workflow, case management
+        remained authoritative for case state and processing. The frontend fetched schema dynamically
+        from the service that actually owned it, and we versioned schemas so an in-flight case stayed
+        pinned to the definition it was created against &mdash; even as the schema evolved underneath it.
+      </p>
+      <p>
+        Instead of triaging symptoms one at a time, this eliminated the whole class of bugs structurally.
+        It's the decision I'd point to first if you asked what "owning the architecture" actually looked
+        like on this project &mdash; not the two-month timeline, not the tech stack, this.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="section contact-section" id="contact">
+  <div class="section-inner reveal">
+    <p class="section-label">Contact</p>
+    <p class="contact-text">
+      Open to conversations about backend systems, AI-assisted engineering, and early-stage teams.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:yufeicaimail@gmail.com">yufeicaimail@gmail.com</a>
+      <a href="https://github.com/SukiCai" target="_blank" rel="noopener">github.com/SukiCai</a>
+      <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">linkedin.com/in/SukiCai</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <a href="#top">back to top</a>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
