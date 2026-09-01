@@ -5,6 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Suki Cai — Software Engineer</title>
 <meta name="description" content="Yufei (Suki) Cai — Software Engineer at Munich Re. Notes on systems, architecture, and AI-assisted engineering." />
+
+<meta name="theme-color" content="#fbfaf8" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f5fdb'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='38' fill='%23fbfaf8'%3ES%3C/text%3E%3C/svg%3E" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Suki Cai — Software Engineer" />
+<meta property="og:description" content="I build backend systems and rebuild the ones that stopped working. Notes on systems, architecture, and AI-assisted engineering." />
+<meta property="og:url" content="https://sukicai.github.io/" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Suki Cai — Software Engineer" />
+<meta name="twitter:description" content="I build backend systems and rebuild the ones that stopped working." />
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
@@ -15,34 +27,44 @@
 <div class="noise"></div>
 
 <header class="hero" id="top">
+  <div class="hero-glow" aria-hidden="true">
+    <span class="orb orb-1"></span>
+    <span class="orb orb-2"></span>
+  </div>
+  <div class="hero-spot" aria-hidden="true"></div>
+
   <nav class="nav">
-    <span class="nav-name">Suki Cai</span>
-    <div class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#writing">Writing</a>
-      <a href="#contact">Contact</a>
+    <span class="nav-name hero-in" style="--d:0ms">Suki Cai</span>
+    <div class="nav-links hero-in" style="--d:60ms">
+      <a href="#work" data-nav>Work</a>
+      <a href="#writing" data-nav>Writing</a>
+      <a href="#contact" data-nav>Contact</a>
       <a href="resume-suki-cai.pdf" class="nav-resume">Résumé</a>
     </div>
   </nav>
 
-  <div class="hero-content reveal">
-    <p class="eyebrow">Software Engineer</p>
-    <h1>Yufei (Suki) Cai</h1>
-    <p class="hero-sub">
+  <div class="hero-content">
+    <p class="eyebrow hero-in" style="--d:120ms">Software Engineer</p>
+    <h1 class="hero-in" style="--d:180ms">Yufei (Suki) Cai</h1>
+    <p class="hero-sub hero-in" style="--d:260ms">
       I build backend systems and rebuild the ones that stopped working.
       Currently at <strong>Munich Re</strong> in New York, finishing an M.S. in Software
       Engineering at <strong>UC Berkeley</strong>.
     </p>
-    <p class="hero-highlight">
+    <p class="hero-highlight hero-in" style="--d:340ms">
       Rebuilt a core enterprise underwriting platform end-to-end in <strong>2 months</strong>,
       replacing a system that took a 15-engineer contractor team roughly <strong>3 years</strong> to build.
     </p>
-    <div class="hero-links">
+    <div class="hero-links hero-in" style="--d:420ms">
       <a href="https://github.com/SukiCai" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="mailto:yufeicaimail@gmail.com">Email</a>
     </div>
   </div>
+
+  <a href="#about" class="scroll-cue" aria-label="Scroll down">
+    <span></span>
+  </a>
 </header>
 
 <main>
@@ -76,7 +98,7 @@
         ran discovery directly with underwriters and their engineering leads, shipped a working POC in a
         week to validate direction before committing months to it, and scoped the rebuild to preserve
         existing carrier workflows rather than forcing a retraining cycle. Shipped in 2 months.
-        Read the architecture decision behind it below &rarr;
+        <a href="#writing" class="inline-arrow-link">Read the architecture decision behind it<span class="arrow">&rarr;</span></a>
       </p>
       <p class="work-result">Helped double enterprise client adoption &middot; $3,000 Spot Bonus, SVP of Digital Solutions</p>
     </article>
@@ -108,33 +130,33 @@
 </section>
 
 <section class="section" id="writing">
-  <div class="section-inner reveal">
-    <p class="section-label">Writing</p>
+  <div class="section-inner">
+    <p class="section-label reveal">Writing</p>
 
     <article class="post">
-      <h3>Source of truth should follow domain boundaries, not service convenience</h3>
-      <p class="post-meta">Notes from the Munich Re platform rebuild</p>
+      <h3 class="reveal">Source of truth should follow domain boundaries, not service convenience</h3>
+      <p class="post-meta reveal">Notes from the Munich Re platform rebuild</p>
 
-      <p>
+      <p class="reveal">
         When we rebuilt the underwriting workbench, the original assumption was that our
         case-management service &mdash; the thing that owns the lifecycle and state of an underwriting
         case &mdash; should also be the single source of truth for everything a case touches, including
         the client-specific schema and interview workflow that drives it.
       </p>
-      <p>
+      <p class="reveal">
         That assumption was quietly responsible for an entire category of bugs. The rules engine, not
         case management, was the system that actually owned each client's configurable schema and
         workflow definitions &mdash; and those could evolve independently. Copying that knowledge into
         case management meant the two services could, and eventually did, disagree with each other.
       </p>
-      <p>
+      <p class="reveal">
         The fix wasn't a patch. It was defining source-of-truth boundaries by domain instead of by
         convenience: the rules engine became authoritative for schema and workflow, case management
         remained authoritative for case state and processing. The frontend fetched schema dynamically
         from the service that actually owned it, and we versioned schemas so an in-flight case stayed
         pinned to the definition it was created against &mdash; even as the schema evolved underneath it.
       </p>
-      <p>
+      <p class="reveal">
         Instead of triaging symptoms one at a time, this eliminated the whole class of bugs structurally.
         It's the decision I'd point to first if you asked what "owning the architecture" actually looked
         like on this project &mdash; not the two-month timeline, not the tech stack, this.
