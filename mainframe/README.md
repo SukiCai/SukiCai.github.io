@@ -46,10 +46,8 @@ public/assets/hero/character.mp4
 `Home` is mounted from the start. `IntroSequence` is a fixed overlay; scrolling grows a CSS-mask hole
 until the overlay unmounts.
 
-## Deploying to Vercel
+## Deploy
 
-This app lives in the `mainframe/` subdirectory (the repo root is still the old GitHub Pages static site).
+Push `main`. GitHub Actions builds `mainframe/` and publishes [sukicai.github.io](https://sukicai.github.io/).
 
-1. Import `SukiCai/SukiCai.github.io` on Vercel.
-2. Set **Root Directory** to `mainframe`.
-3. Deploy. Pushes to `main` auto-deploy.
+In the repo: **Settings → Pages → Source → GitHub Actions**.
