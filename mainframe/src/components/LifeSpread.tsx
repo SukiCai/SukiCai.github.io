@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import { useReveal } from '../hooks/useReveal'
 import { useLifeSpread } from '../hooks/useLifeSpread'
 import { LIFE_CARDS } from '../data/content'
+import { SectionLabel } from './SectionLabel'
 
 export function LifeSpread() {
   const introRef = useReveal<HTMLDivElement>()
@@ -13,7 +14,7 @@ export function LifeSpread() {
   return (
     <section className="section life-section" id="life">
       <div className="section-inner reveal" ref={introRef}>
-        <p className="section-label">Off the Clock</p>
+        <SectionLabel text="Off the Clock" />
         <p className="life-intro">A few frames from outside the editor &mdash; hover, or tab through, to pull one out of the fan.</p>
       </div>
 

@@ -2,8 +2,11 @@ import { useState } from 'react'
 import { IntroSequence } from './components/IntroSequence'
 import { Home } from './components/Home'
 
+/** Flip back to false to restore the terminal + particle intro. */
+const SKIP_INTRO = true
+
 function App() {
-  const [introDone, setIntroDone] = useState(false)
+  const [introDone, setIntroDone] = useState(SKIP_INTRO)
 
   return (
     <>
@@ -12,7 +15,7 @@ function App() {
           growing hole cut into it (see .intro-stage / useScrollMaskReveal),
           so there's a live page right there instead of a loading transition. */}
       <Home introDone={introDone} />
-      {!introDone && <IntroSequence onComplete={() => setIntroDone(true)} />}
+      {!SKIP_INTRO && !introDone && <IntroSequence onComplete={() => setIntroDone(true)} />}
     </>
   )
 }

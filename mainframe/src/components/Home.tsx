@@ -3,6 +3,7 @@ import { Hero } from './Hero'
 import { BackgroundVideo } from './BackgroundVideo'
 import { About } from './About'
 import { Work } from './Work'
+import { Notes } from './Notes'
 import { Writing } from './Writing'
 import { LifeSpread } from './LifeSpread'
 import { Contact } from './Contact'
@@ -17,6 +18,7 @@ export function Home({ introDone = true }: { introDone?: boolean }) {
       <main className="relative z-[1] bg-[var(--bg)]">
         <About />
         <Work />
+        <Notes />
         <Writing />
         <LifeSpread />
         <Contact />

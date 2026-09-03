@@ -1,12 +1,43 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import { CopyIcon } from './CopyIcon'
 import { useTypewriter } from '../hooks/useTypewriter'
+import { useReducedMotion } from '../hooks/useReducedMotion'
 import { CONTACT, HERO } from '../data/content'
+import Magnet from '../bits/Magnet'
+import GlareHover from '../bits/GlareHover'
+
+const pillClass =
+  'relative z-[1] inline-flex items-center justify-center whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:bg-black hover:text-white sm:px-5 sm:text-[15px] active:scale-[0.97]'
+
+function MagneticPill({ children, disabled }: { children: ReactNode; disabled: boolean }) {
+  return (
+    <Magnet
+      padding={28}
+      magnetStrength={7}
+      disabled={disabled}
+      activeTransition="transform 0.22s cubic-bezier(0.23, 1, 0.32, 1)"
+      inactiveTransition="transform 0.35s cubic-bezier(0.23, 1, 0.32, 1)"
+      wrapperClassName="mx-[0.2em] mb-[0.4em]"
+    >
+      <GlareHover
+        borderRadius="999px"
+        glareColor="#ffffff"
+        glareOpacity={0.42}
+        glareSize={180}
+        transitionDuration={280}
+        className="rounded-full"
+      >
+        {children}
+      </GlareHover>
+    </Magnet>
+  )
+}
 
 export function Hero({ active = true }: { active?: boolean }) {
   const { displayed, done } = useTypewriter(HERO.typewriter, 38, 600, active)
   const [pillsVisible, setPillsVisible] = useState(false)
   const [copied, setCopied] = useState(false)
+  const reduced = useReducedMotion()
 
   useEffect(() => {
     if (!active) {
@@ -33,7 +64,10 @@ export function Hero({ active = true }: { active?: boolean }) {
       className="relative z-[1] flex h-screen flex-col justify-end overflow-hidden px-5 pb-12 sm:px-8 md:justify-center md:px-10 md:pb-0"
       style={{ fontFamily: 'var(--font-body)' }}
     >
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#d2ccc2]/70 via-[#d2ccc2]/20 to-transparent" aria-hidden="true" />
+      <div
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#e8e6e3]/70 via-[#e8e6e3]/18 to-transparent md:[mask-image:linear-gradient(to_bottom,black_0%,black_72%,transparent_100%)] md:[-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_72%,transparent_100%)]"
+        aria-hidden="true"
+      />
 
       <div className="relative z-10 mt-auto max-w-xl md:mt-0">
         <p
@@ -71,27 +105,30 @@ export function Hero({ active = true }: { active?: boolean }) {
           }`}
         >
           {HERO.pills.map((pill) => (
-            <a
-              key={pill.href}
-              href={pill.href}
-              {...(pill.external ? { target: '_blank', rel: 'noopener' } : {})}
-              className="mx-[0.2em] mb-[0.4em] inline-flex items-center justify-center whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:bg-black hover:text-white sm:px-5 sm:text-[15px] active:scale-[0.97]"
-            >
-              {pill.label}
-            </a>
+            <MagneticPill key={pill.href} disabled={reduced}>
+              <a
+                href={pill.href}
+                {...(pill.external ? { target: '_blank', rel: 'noopener' } : {})}
+                className={pillClass}
+              >
+                {pill.label}
+              </a>
+            </MagneticPill>
           ))}
 
-          <button
-            type="button"
-            onClick={copyEmail}
-            className="mx-[0.2em] mb-[0.4em] inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:bg-black hover:text-white sm:gap-3 sm:px-5 sm:text-[15px] active:scale-[0.97]"
-            aria-label={copied ? 'Email copied' : `Copy ${CONTACT.email}`}
-          >
-            <span>
-              {copied ? 'Copied' : 'Email'}: <span className="underline underline-offset-1">{CONTACT.email}</span>
-            </span>
-            <CopyIcon />
-          </button>
+          <MagneticPill disabled={reduced}>
+            <button
+              type="button"
+              onClick={copyEmail}
+              className={`${pillClass} gap-2 sm:gap-3`}
+              aria-label={copied ? 'Email copied' : `Copy ${CONTACT.email}`}
+            >
+              <span>
+                {copied ? 'Copied' : 'Email'}: <span className="underline underline-offset-1">{CONTACT.email}</span>
+              </span>
+              <CopyIcon />
+            </button>
+          </MagneticPill>
         </div>
       </div>
     </section>
