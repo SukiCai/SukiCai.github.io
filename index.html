@@ -1,283 +1,47 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Suki Cai — Software Engineer</title>
-<meta name="description" content="Yufei (Suki) Cai — Software Engineer at Munich Re. Notes on systems, architecture, and AI-assisted engineering." />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Suki Cai — Software Engineer</title>
+    <meta
+      name="description"
+      content="Yufei (Suki) Cai — Software Engineer at Munich Re. Notes on systems, architecture, and AI-assisted engineering."
+    />
+    <meta name="theme-color" content="#fbfaf8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
-<meta name="theme-color" content="#fbfaf8" />
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f5fdb'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='38' fill='%23fbfaf8'%3ES%3C/text%3E%3C/svg%3E" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Suki Cai — Software Engineer" />
+    <meta
+      property="og:description"
+      content="I build backend systems and rebuild the ones that stopped working. Notes on systems, architecture, and AI-assisted engineering."
+    />
+    <meta property="og:url" content="https://sukicai.github.io/" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Suki Cai — Software Engineer" />
+    <meta name="twitter:description" content="I build backend systems and rebuild the ones that stopped working." />
 
-<meta property="og:type" content="website" />
-<meta property="og:title" content="Suki Cai — Software Engineer" />
-<meta property="og:description" content="I build backend systems and rebuild the ones that stopped working. Notes on systems, architecture, and AI-assisted engineering." />
-<meta property="og:url" content="https://sukicai.github.io/" />
-<meta name="twitter:card" content="summary" />
-<meta name="twitter:title" content="Suki Cai — Software Engineer" />
-<meta name="twitter:description" content="I build backend systems and rebuild the ones that stopped working." />
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-
-<div class="noise"></div>
-
-<header class="hero" id="top">
-  <div class="hero-glow" aria-hidden="true">
-    <span class="orb orb-1"></span>
-    <span class="orb orb-2"></span>
-  </div>
-  <div class="hero-spot" aria-hidden="true"></div>
-
-  <nav class="nav">
-    <span class="nav-brand hero-in" style="--d:0ms">
-      <span class="logo-mark" id="logoMark" aria-hidden="true"></span>
-      <span class="nav-name">Suki Cai</span>
-    </span>
-    <div class="nav-links hero-in" style="--d:60ms">
-      <a href="#work" data-nav>Work</a>
-      <a href="#writing" data-nav>Writing</a>
-      <a href="#life" data-nav>Life</a>
-      <a href="#contact" data-nav>Contact</a>
-      <a href="resume-suki-cai.pdf" class="nav-resume">Résumé</a>
-    </div>
-  </nav>
-
-  <div class="hero-content">
-    <p class="eyebrow hero-in" style="--d:120ms">Software Engineer</p>
-    <h1 class="hero-in" style="--d:180ms" id="nameHeading">
-      <span class="particle-name-text">Yufei (Suki) Cai</span>
-      <canvas class="particle-canvas" id="nameCanvas" aria-hidden="true"></canvas>
-    </h1>
-    <p class="hero-sub hero-in" style="--d:260ms">
-      I build backend systems and rebuild the ones that stopped working.
-      Currently at <strong>Munich Re</strong> in New York, finishing an M.S. in Software
-      Engineering at <strong>UC Berkeley</strong>.
-    </p>
-    <p class="hero-highlight hero-in" style="--d:340ms">
-      Rebuilt a core enterprise underwriting platform end-to-end in <strong>2 months</strong>,
-      replacing a system that took a 15-engineer contractor team roughly <strong>3 years</strong> to build.
-    </p>
-    <div class="hero-links hero-in" style="--d:420ms">
-      <a href="https://github.com/SukiCai" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a href="mailto:yufeicaimail@gmail.com">Email</a>
-    </div>
-
-    <div class="terminal hero-in" style="--d:500ms" aria-hidden="true">
-      <div class="terminal-bar">
-        <span class="term-dot term-dot-red"></span>
-        <span class="term-dot term-dot-yellow"></span>
-        <span class="term-dot term-dot-green"></span>
-        <span class="terminal-title">zsh — suki</span>
-      </div>
-      <div class="terminal-body">
-        <div class="terminal-line">
-          <span class="term-prompt">$</span>
-          <span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span>
-        </div>
-        <div class="term-output" id="termOutput"></div>
-      </div>
-    </div>
-  </div>
-
-  <a href="#about" class="scroll-cue" aria-label="Scroll down">
-    <span></span>
-  </a>
-</header>
-
-<main>
-
-<section class="section" id="about">
-  <div class="section-inner reveal">
-    <p class="section-label">About</p>
-    <p class="about-text">
-      I like systems with clear ownership boundaries and code that survives contact with real users.
-      Most of my work has been in insurance and financial infrastructure &mdash; multi-tenant platforms,
-      background job systems, and the unglamorous plumbing that keeps enterprise software honest under load.
-      Lately I've been building with AI-assisted workflows (Claude Code, MCP) to move faster without giving up
-      architectural ownership &mdash; the tools write more code, I still make the decisions.
-    </p>
-  </div>
-</section>
-
-<section class="section" id="work">
-  <div class="section-inner">
-    <p class="section-label reveal">Selected Work</p>
-
-    <article class="work-item reveal">
-      <div class="work-head">
-        <h3>Underwriting Platform Rebuild</h3>
-        <span class="work-meta">Munich Re · 2024&ndash;present</span>
-      </div>
-      <p class="work-stack">FastAPI &middot; PostgreSQL &middot; React / Next.js &middot; Kubernetes</p>
-      <p class="work-desc">
-        The existing workbench &mdash; built by an external contractor team over ~3 years &mdash; had
-        accumulated thousands of open bugs and a frontend our team didn't even own. I led the rebuild:
-        ran discovery directly with underwriters and their engineering leads, shipped a working POC in a
-        week to validate direction before committing months to it, and scoped the rebuild to preserve
-        existing carrier workflows rather than forcing a retraining cycle. Shipped in 2 months.
-        <a href="#writing" class="inline-arrow-link">Read the architecture decision behind it<span class="arrow">&rarr;</span></a>
-      </p>
-      <p class="work-result">Helped double enterprise client adoption &middot; $3,000 Spot Bonus, SVP of Digital Solutions</p>
-    </article>
-
-    <article class="work-item reveal">
-      <div class="work-head">
-        <h3>Genomic Research Platform</h3>
-        <span class="work-meta">Sponsored by Broad Institute &middot; 2026</span>
-      </div>
-      <p class="work-stack">FastAPI &middot; Next.js &middot; D3.js &middot; Web Workers</p>
-      <p class="work-desc">
-        Async pipelines and interactive visualizations for multi-GB genomic datasets. Chunked processing
-        and Web Workers keep the UI thread responsive while rendering 1M+ data points.
-      </p>
-    </article>
-
-    <article class="work-item reveal">
-      <div class="work-head">
-        <h3>Serverless E-commerce Platform</h3>
-        <span class="work-meta">Sponsored by Amazon &middot; 2023</span>
-      </div>
-      <p class="work-stack">Lambda &middot; DynamoDB &middot; Cognito</p>
-      <p class="work-desc">
-        Led an 8-person team building an event-driven serverless architecture designed to absorb burst
-        traffic without over-provisioning.
-      </p>
-    </article>
-  </div>
-</section>
-
-<section class="section" id="writing">
-  <div class="section-inner">
-    <p class="section-label reveal">Writing</p>
-
-    <article class="post">
-      <h3 class="reveal">Source of truth should follow domain boundaries, not service convenience</h3>
-      <p class="post-meta reveal">Notes from the Munich Re platform rebuild</p>
-
-      <p class="reveal">
-        When we rebuilt the underwriting workbench, the original assumption was that our
-        case-management service &mdash; the thing that owns the lifecycle and state of an underwriting
-        case &mdash; should also be the single source of truth for everything a case touches, including
-        the client-specific schema and interview workflow that drives it.
-      </p>
-      <p class="reveal">
-        That assumption was quietly responsible for an entire category of bugs. The rules engine, not
-        case management, was the system that actually owned each client's configurable schema and
-        workflow definitions &mdash; and those could evolve independently. Copying that knowledge into
-        case management meant the two services could, and eventually did, disagree with each other.
-      </p>
-      <p class="reveal">
-        The fix wasn't a patch. It was defining source-of-truth boundaries by domain instead of by
-        convenience: the rules engine became authoritative for schema and workflow, case management
-        remained authoritative for case state and processing. The frontend fetched schema dynamically
-        from the service that actually owned it, and we versioned schemas so an in-flight case stayed
-        pinned to the definition it was created against &mdash; even as the schema evolved underneath it.
-      </p>
-      <p class="reveal">
-        Instead of triaging symptoms one at a time, this eliminated the whole class of bugs structurally.
-        It's the decision I'd point to first if you asked what "owning the architecture" actually looked
-        like on this project &mdash; not the two-month timeline, not the tech stack, this.
-      </p>
-    </article>
-  </div>
-</section>
-
-<section class="section life-section" id="life">
-  <div class="section-inner reveal">
-    <p class="section-label">Off the Clock</p>
-    <p class="life-intro">A few frames from outside the editor &mdash; hover, or tab through, to pull one out of the fan.</p>
-  </div>
-
-  <div class="life-spread reveal" role="group" aria-label="A few personal moments outside of work">
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-1-code.webp" alt="Laptop glowing at a desk late at night, mid&#8209;debug" loading="lazy" width="373" height="560" />
-          <span class="life-caption">2am, mid&#8209;debug</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-5-coffee.webp" alt="A cup of coffee with steam curling up in morning light" loading="lazy" width="373" height="560" />
-          <span class="life-caption">Coffee, first</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-3-campus.webp" alt="A university bell tower on campus, seen from a path lined with a tree" loading="lazy" width="373" height="560" />
-          <span class="life-caption">Berkeley, fall term</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-6-books.webp" alt="A small stack of books with one open on top" loading="lazy" width="373" height="560" />
-          <span class="life-caption">Rereading, again</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-2-nyc.webp" alt="New York City skyline at dusk from a riverside bench" loading="lazy" width="373" height="560" />
-          <span class="life-caption">New York, lately</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-4-trail.webp" alt="A hiker looking out over layered mountain ridges" loading="lazy" width="373" height="560" />
-          <span class="life-caption">Wherever it leads</span>
-        </span>
-      </button>
-    </div>
-    <div class="life-arm">
-      <button class="life-card" type="button">
-        <span class="life-card-face">
-          <img src="assets/life/life-7-travel.webp" alt="View from an airplane window over clouds at golden hour" loading="lazy" width="373" height="560" />
-          <span class="life-caption">Over the Pacific</span>
-        </span>
-      </button>
-    </div>
-  </div>
-</section>
-
-<section class="section contact-section" id="contact">
-  <div class="section-inner reveal">
-    <p class="section-label">Contact</p>
-    <p class="contact-text">
-      Open to conversations about backend systems, AI-assisted engineering, and early-stage teams.
-    </p>
-    <div class="contact-links">
-      <a href="mailto:yufeicaimail@gmail.com">yufeicaimail@gmail.com</a>
-      <a href="https://github.com/SukiCai" target="_blank" rel="noopener">github.com/SukiCai</a>
-      <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">linkedin.com/in/SukiCai</a>
-    </div>
-  </div>
-</section>
-
-</main>
-
-<footer class="footer">
-  <a href="#top">back to top</a>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
-<script src="particle-text.js" defer></script>
-<script src="terminal-anim.js" defer></script>
-<script src="life-spread.js" defer></script>
-<script src="script.js" defer></script>
-</body>
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/5ac3fe7c6abd2f62067f266d89671492?family=HelveticaNowDisplay-Medium"
+    />
+    <link
+      rel="stylesheet"
+      href="https://db.onlinewebfonts.com/c/1aa3377e489837a26d019bba501e779d?family=HelveticaNowDisplayW01-Rg"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" crossorigin src="/assets/index-Dp-7Iucg.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CR1qvtyA.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
