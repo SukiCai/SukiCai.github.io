@@ -91,3 +91,17 @@ export const CONTACT = {
   linkedin: 'https://linkedin.com/in/SukiCai',
   linkedinLabel: 'linkedin.com/in/SukiCai',
 }
+
+export const HERO = {
+  name: 'Yufei (Suki) Cai',
+  headline: 'Software Engineer at Munich Re · New York',
+  subhead: 'M.S. Software Engineering, UC Berkeley',
+  typewriter:
+    'I build backend systems and rebuild the ones that stopped working. Open to conversations about architecture, AI-assisted engineering, and early-stage teams.',
+  pills: [
+    { href: '#work', label: 'Selected work', external: false },
+    { href: '#writing', label: 'Architecture notes', external: false },
+    { href: 'https://github.com/SukiCai', label: 'GitHub ↗', external: true },
+    { href: 'https://linkedin.com/in/SukiCai', label: 'LinkedIn ↗', external: true },
+  ],
+}

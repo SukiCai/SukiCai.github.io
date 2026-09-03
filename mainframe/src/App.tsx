@@ -11,7 +11,7 @@ function App() {
       {/* Home is always mounted underneath — the intro overlay just has a
           growing hole cut into it (see .intro-stage / useScrollMaskReveal),
           so there's a live page right there instead of a loading transition. */}
-      <Home />
+      <Home introDone={introDone} />
       {!introDone && <IntroSequence onComplete={() => setIntroDone(true)} />}
     </>
   )
