@@ -42,6 +42,70 @@ if (hero && spot && canHover && !prefersReducedMotion) {
   });
 }
 
+/* ---------------- Particle name (canvas text-to-particles) ---------------- */
+
+(function () {
+  const heading = document.getElementById('nameHeading');
+  const canvas = document.getElementById('nameCanvas');
+  if (!heading || !canvas || typeof createParticleText === 'undefined') return;
+
+  const particleName = createParticleText(heading, canvas, { reducedMotion: prefersReducedMotion });
+  const start = () => particleName.play();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(start).catch(start);
+  } else {
+    start();
+  }
+})();
+
+/* ---------------- Logo mark (Lottie sparkle) ---------------- */
+
+(function () {
+  const el = document.getElementById('logoMark');
+  if (!el || typeof lottie === 'undefined') return;
+
+  const anim = lottie.loadAnimation({
+    container: el,
+    renderer: 'svg',
+    loop: !prefersReducedMotion,
+    autoplay: true,
+    path: 'spark.json',
+  });
+
+  if (prefersReducedMotion) {
+    // Settle on a single, still frame instead of a continuous spin/pulse.
+    anim.addEventListener('DOMLoaded', () => anim.goToAndStop(0, true));
+  }
+})();
+
+/* ---------------- Terminal install animation ---------------- */
+
+(function () {
+  const cmdEl = document.getElementById('termCmd');
+  const cursorEl = document.getElementById('termCursor');
+  const outputEl = document.getElementById('termOutput');
+  if (!cmdEl || !cursorEl || !outputEl || typeof runTerminalInstall === 'undefined') return;
+
+  runTerminalInstall({
+    cmdEl,
+    cursorEl,
+    outputEl,
+    command: 'npx install-suki',
+    reducedMotion: prefersReducedMotion,
+    startDelay: 1300,
+    trailingPrompt: true,
+    lines: [
+      { type: 'dim', text: 'resolving dependencies...' },
+      { type: 'check', text: 'backend-systems@production-grade' },
+      { type: 'check', text: 'systems-architecture@source-of-truth' },
+      { type: 'check', text: 'ai-assisted-engineering@claude-code' },
+      { type: 'check', text: 'underwriting-rebuild (2mo, replaces 3yr build)' },
+      { type: 'muted', text: 'added 1 engineer in 0.8s' },
+      { type: 'success', text: '✓ Suki Cai installed successfully' },
+    ],
+  });
+})();
+
 /* ---------------- Nav scrollspy ---------------- */
 
 const navLinks = document.querySelectorAll('[data-nav]');

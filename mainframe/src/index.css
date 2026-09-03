@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --bg: #fbfaf8;
   --ink: #141414;
@@ -13,9 +15,13 @@
   --max: 680px;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
@@ -30,6 +36,10 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+button {
+  font: inherit;
 }
 
 /* ---------------- Grain texture ---------------- */
@@ -57,9 +67,15 @@ a {
   transform: translateY(0);
 }
 
-.work-item.reveal:nth-of-type(1) { transition-delay: 0ms; }
-.work-item.reveal:nth-of-type(2) { transition-delay: 70ms; }
-.work-item.reveal:nth-of-type(3) { transition-delay: 140ms; }
+.work-item.reveal:nth-of-type(1) {
+  transition-delay: 0ms;
+}
+.work-item.reveal:nth-of-type(2) {
+  transition-delay: 70ms;
+}
+.work-item.reveal:nth-of-type(3) {
+  transition-delay: 140ms;
+}
 
 /* ---------------- Hero entrance ---------------- */
 
@@ -231,13 +247,21 @@ a {
 }
 
 @keyframes drift-1 {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(-40px, 30px) scale(1.08); }
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(-40px, 30px) scale(1.08);
+  }
 }
 
 @keyframes drift-2 {
-  from { transform: translate(0, 0) scale(1); }
-  to { transform: translate(30px, -20px) scale(1.05); }
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(30px, -20px) scale(1.05);
+  }
 }
 
 .hero-spot {
@@ -261,12 +285,18 @@ a {
 }
 
 @media (hover: none), (pointer: coarse) {
-  .hero-spot { display: none; }
+  .hero-spot {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .orb { animation: none; }
-  .hero-spot { display: none; }
+  .orb {
+    animation: none;
+  }
+  .hero-spot {
+    display: none;
+  }
 }
 
 .eyebrow {
@@ -402,9 +432,15 @@ a {
   border-radius: 50%;
 }
 
-.term-dot-red { background: #ff5f57; }
-.term-dot-yellow { background: #ffbd2e; }
-.term-dot-green { background: #28c840; }
+.term-dot-red {
+  background: #ff5f57;
+}
+.term-dot-yellow {
+  background: #ffbd2e;
+}
+.term-dot-green {
+  background: #28c840;
+}
 
 .terminal-title {
   margin-left: 6px;
@@ -443,7 +479,9 @@ a {
 }
 
 @keyframes term-blink {
-  50% { opacity: 0; }
+  50% {
+    opacity: 0;
+  }
 }
 
 .term-output {
@@ -488,8 +526,12 @@ a {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .term-cursor { animation: none; }
-  .term-line-out { transition: none; }
+  .term-cursor {
+    animation: none;
+  }
+  .term-line-out {
+    transition: none;
+  }
 }
 
 @media (max-width: 560px) {
@@ -531,16 +573,27 @@ a {
 }
 
 @keyframes scroll-cue-move {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(8px); opacity: 0.3; }
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.3;
+  }
 }
 
 @media (max-width: 700px) {
-  .scroll-cue { display: none; }
+  .scroll-cue {
+    display: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .scroll-cue span { animation: none; }
+  .scroll-cue span {
+    animation: none;
+  }
 }
 
 /* ---------------- Sections ---------------- */
@@ -734,13 +787,34 @@ a {
   transform: translateX(-50%) rotate(calc(var(--open) + var(--push)));
 }
 
-.life-arm:nth-child(1) { --i: 0; z-index: 4; }
-.life-arm:nth-child(2) { --i: 1; z-index: 5; }
-.life-arm:nth-child(3) { --i: 2; z-index: 6; }
-.life-arm:nth-child(4) { --i: 3; z-index: 7; }
-.life-arm:nth-child(5) { --i: 4; z-index: 6; }
-.life-arm:nth-child(6) { --i: 5; z-index: 5; }
-.life-arm:nth-child(7) { --i: 6; z-index: 4; }
+.life-arm:nth-child(1) {
+  --i: 0;
+  z-index: 4;
+}
+.life-arm:nth-child(2) {
+  --i: 1;
+  z-index: 5;
+}
+.life-arm:nth-child(3) {
+  --i: 2;
+  z-index: 6;
+}
+.life-arm:nth-child(4) {
+  --i: 3;
+  z-index: 7;
+}
+.life-arm:nth-child(5) {
+  --i: 4;
+  z-index: 6;
+}
+.life-arm:nth-child(6) {
+  --i: 5;
+  z-index: 5;
+}
+.life-arm:nth-child(7) {
+  --i: 6;
+  z-index: 4;
+}
 
 .life-card {
   /* This is the hit-target: its box never moves on hover/focus, so the
@@ -941,20 +1015,40 @@ a {
   color: var(--ink);
 }
 
-/* ---------------- Landing page (standalone intro) ---------------- */
+/* ---------------- Intro sequence (terminal -> particle greeting) ---------------- */
 
-.landing-stage {
-  position: relative;
-  min-height: 100vh;
-  min-height: 100dvh;
+.intro-stage {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
   display: grid;
   place-items: center;
   padding: 32px 24px;
   text-align: center;
   overflow: hidden;
+  background: var(--bg);
+  /* Driven by useScrollMaskReveal: as --reveal-radius grows, a circular hole
+     opens in this overlay so the real Home page underneath shows through,
+     instead of the old iframe-preview trick from the two-page version. */
+  --reveal-radius: 0px;
+  --reveal-feather: 40px;
+  -webkit-mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent calc(var(--reveal-radius) - var(--reveal-feather)),
+    #000 var(--reveal-radius)
+  );
+  mask-image: radial-gradient(
+    circle at 50% 50%,
+    transparent calc(var(--reveal-radius) - var(--reveal-feather)),
+    #000 var(--reveal-radius)
+  );
 }
 
-.landing-landscape {
+.intro-stage.is-leaving {
+  transition: opacity 400ms var(--ease-out);
+}
+
+.intro-landscape {
   position: absolute;
   inset: 0;
   z-index: 0;
@@ -965,12 +1059,12 @@ a {
   transition: opacity 1400ms var(--ease-out);
 }
 
-.landing-landscape.is-ready {
+.intro-landscape.is-ready {
   opacity: 1;
 }
 
-.landing-stage > .landing-terminal-wrap,
-.landing-stage > .landing-greeting {
+.intro-stage > .intro-terminal-wrap,
+.intro-stage > .intro-greeting {
   position: relative;
   z-index: 1;
   grid-column: 1;
@@ -978,11 +1072,11 @@ a {
   transition: opacity 550ms var(--ease-out), transform 550ms var(--ease-out);
 }
 
-.landing-terminal-wrap .terminal {
+.intro-terminal-wrap .terminal {
   margin-top: 0;
 }
 
-.landing-greeting {
+.intro-greeting {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -995,19 +1089,19 @@ a {
   pointer-events: none;
 }
 
-.landing-stage.is-greeting .landing-terminal-wrap {
+.intro-stage.is-greeting .intro-terminal-wrap {
   opacity: 0;
   transform: translateY(-10px) scale(0.96);
   pointer-events: none;
 }
 
-.landing-stage.is-greeting .landing-greeting {
+.intro-stage.is-greeting .intro-greeting {
   opacity: 1;
   transform: translateY(0);
   pointer-events: auto;
 }
 
-.landing-greeting-line {
+.intro-greeting-line {
   position: relative;
   display: block;
   font-family: var(--serif);
@@ -1017,7 +1111,7 @@ a {
   margin: 0 0 4px;
 }
 
-.landing-signature-line {
+.intro-signature-line {
   position: relative;
   display: block;
   font-size: clamp(3.2rem, 13vw, 7.5rem);
@@ -1027,7 +1121,7 @@ a {
   margin: 0 0 28px;
 }
 
-.landing-signature-line .particle-name-text {
+.intro-signature-line .particle-name-text {
   background: linear-gradient(100deg, var(--ink) 40%, var(--ink-soft) 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -1035,9 +1129,9 @@ a {
   -webkit-text-fill-color: transparent;
 }
 
-/* ---------------- Landing scroll hint (also the click-through fallback) ---------------- */
+/* ---------------- Intro scroll hint (also the click-through fallback) ---------------- */
 
-.landing-scroll-hint {
+.intro-scroll-hint {
   display: flex;
   align-items: center;
   gap: 9px;
@@ -1048,18 +1142,22 @@ a {
   opacity: 0;
   transform: translateY(6px);
   transition: opacity 500ms var(--ease-out), transform 500ms var(--ease-out), color 160ms ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
-.landing-scroll-hint.is-visible {
+.intro-scroll-hint.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.landing-scroll-hint:hover {
+.intro-scroll-hint:hover {
   color: var(--accent);
 }
 
-.landing-scroll-hint .scroll-hint-mouse {
+.intro-scroll-hint .scroll-hint-mouse {
   position: relative;
   width: 16px;
   height: 24px;
@@ -1069,7 +1167,7 @@ a {
   transition: border-color 160ms ease;
 }
 
-.landing-scroll-hint .scroll-hint-mouse::before {
+.intro-scroll-hint .scroll-hint-mouse::before {
   content: "";
   position: absolute;
   left: 50%;
@@ -1083,88 +1181,81 @@ a {
 }
 
 @keyframes scroll-hint-wheel {
-  0% { transform: translateY(0); opacity: 1; }
-  60% { transform: translateY(7px); opacity: 0; }
-  61% { transform: translateY(0); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
-}
-
-/* ---------------- Landing scroll-mask transition ---------------- */
-
-.mask-reveal {
-  position: fixed;
-  inset: 0;
-  z-index: 40;
-  pointer-events: none;
-  opacity: 0;
-  --mask-radius: 0px;
-  --mask-feather: 40px;
-  --mask-scrim: 0;
-  --mask-zoom: 1.1;
-}
-
-.mask-reveal-frame-wrap {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  background: var(--bg);
-  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 calc(var(--mask-radius) - var(--mask-feather)), transparent var(--mask-radius));
-  mask-image: radial-gradient(circle at 50% 50%, #000 calc(var(--mask-radius) - var(--mask-feather)), transparent var(--mask-radius));
-}
-
-.mask-reveal-frame {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: 0;
-  background: var(--bg);
-  transform: scale(var(--mask-zoom));
-  transform-origin: 50% 50%;
-  pointer-events: none;
-}
-
-.mask-reveal-scrim {
-  position: absolute;
-  inset: 0;
-  background: var(--ink);
-  opacity: var(--mask-scrim);
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  60% {
+    transform: translateY(7px);
+    opacity: 0;
+  }
+  61% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .landing-stage > .landing-terminal-wrap,
-  .landing-stage > .landing-greeting,
-  .landing-scroll-hint,
-  .landing-landscape {
+  .intro-stage > .intro-terminal-wrap,
+  .intro-stage > .intro-greeting,
+  .intro-scroll-hint,
+  .intro-landscape {
     transition: none;
   }
 
-  /* The hint link is still the only way into the main site under reduced
-     motion (no scroll-hijack transition runs), so keep it usable — just
-     drop the little pulsing wheel animation. */
-  .landing-scroll-hint .scroll-hint-mouse::before {
+  /* The hint is still the only way past the intro under reduced motion (no
+     scroll-hijack transition runs), so keep it usable — just drop the
+     little pulsing wheel animation. */
+  .intro-scroll-hint .scroll-hint-mouse::before {
     animation: none;
-  }
-
-  .mask-reveal {
-    display: none;
   }
 }
 
 @media (max-width: 560px) {
-  .landing-signature-line { margin: 0 0 22px; }
+  .intro-signature-line {
+    margin: 0 0 22px;
+  }
 }
 
 /* ---------------- Responsive ---------------- */
 
 @media (max-width: 560px) {
-  .nav { padding: 22px 20px 0; }
-  .nav-links { gap: 14px; font-size: 13px; }
-  .hero-content { padding: 48px 20px 0; }
-  .hero h1 { font-size: 34px; }
-  .hero-sub, .hero-highlight { font-size: 15.5px; }
-  .section { padding: 44px 0; }
-  .section-inner { padding: 0 20px; }
-  .work-item { padding-left: 14px; }
-  .orb-1 { width: 260px; height: 260px; }
-  .orb-2 { width: 200px; height: 200px; }
+  .nav {
+    padding: 22px 20px 0;
+  }
+  .nav-links {
+    gap: 14px;
+    font-size: 13px;
+  }
+  .hero-content {
+    padding: 48px 20px 0;
+  }
+  .hero h1 {
+    font-size: 34px;
+  }
+  .hero-sub,
+  .hero-highlight {
+    font-size: 15.5px;
+  }
+  .section {
+    padding: 44px 0;
+  }
+  .section-inner {
+    padding: 0 20px;
+  }
+  .work-item {
+    padding-left: 14px;
+  }
+  .orb-1 {
+    width: 260px;
+    height: 260px;
+  }
+  .orb-2 {
+    width: 200px;
+    height: 200px;
+  }
 }

@@ -34,10 +34,14 @@
   <div class="hero-spot" aria-hidden="true"></div>
 
   <nav class="nav">
-    <span class="nav-name hero-in" style="--d:0ms">Suki Cai</span>
+    <span class="nav-brand hero-in" style="--d:0ms">
+      <span class="logo-mark" id="logoMark" aria-hidden="true"></span>
+      <span class="nav-name">Suki Cai</span>
+    </span>
     <div class="nav-links hero-in" style="--d:60ms">
       <a href="#work" data-nav>Work</a>
       <a href="#writing" data-nav>Writing</a>
+      <a href="#life" data-nav>Life</a>
       <a href="#contact" data-nav>Contact</a>
       <a href="resume-suki-cai.pdf" class="nav-resume">Résumé</a>
     </div>
@@ -45,7 +49,10 @@
 
   <div class="hero-content">
     <p class="eyebrow hero-in" style="--d:120ms">Software Engineer</p>
-    <h1 class="hero-in" style="--d:180ms">Yufei (Suki) Cai</h1>
+    <h1 class="hero-in" style="--d:180ms" id="nameHeading">
+      <span class="particle-name-text">Yufei (Suki) Cai</span>
+      <canvas class="particle-canvas" id="nameCanvas" aria-hidden="true"></canvas>
+    </h1>
     <p class="hero-sub hero-in" style="--d:260ms">
       I build backend systems and rebuild the ones that stopped working.
       Currently at <strong>Munich Re</strong> in New York, finishing an M.S. in Software
@@ -59,6 +66,22 @@
       <a href="https://github.com/SukiCai" target="_blank" rel="noopener">GitHub ↗</a>
       <a href="https://linkedin.com/in/SukiCai" target="_blank" rel="noopener">LinkedIn ↗</a>
       <a href="mailto:yufeicaimail@gmail.com">Email</a>
+    </div>
+
+    <div class="terminal hero-in" style="--d:500ms" aria-hidden="true">
+      <div class="terminal-bar">
+        <span class="term-dot term-dot-red"></span>
+        <span class="term-dot term-dot-yellow"></span>
+        <span class="term-dot term-dot-green"></span>
+        <span class="terminal-title">zsh — suki</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="term-prompt">$</span>
+          <span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span>
+        </div>
+        <div class="term-output" id="termOutput"></div>
+      </div>
     </div>
   </div>
 
@@ -165,6 +188,72 @@
   </div>
 </section>
 
+<section class="section life-section" id="life">
+  <div class="section-inner reveal">
+    <p class="section-label">Off the Clock</p>
+    <p class="life-intro">A few frames from outside the editor &mdash; hover, or tab through, to pull one out of the fan.</p>
+  </div>
+
+  <div class="life-spread reveal" role="group" aria-label="A few personal moments outside of work">
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-1-code.webp" alt="Laptop glowing at a desk late at night, mid&#8209;debug" loading="lazy" width="373" height="560" />
+          <span class="life-caption">2am, mid&#8209;debug</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-5-coffee.webp" alt="A cup of coffee with steam curling up in morning light" loading="lazy" width="373" height="560" />
+          <span class="life-caption">Coffee, first</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-3-campus.webp" alt="A university bell tower on campus, seen from a path lined with a tree" loading="lazy" width="373" height="560" />
+          <span class="life-caption">Berkeley, fall term</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-6-books.webp" alt="A small stack of books with one open on top" loading="lazy" width="373" height="560" />
+          <span class="life-caption">Rereading, again</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-2-nyc.webp" alt="New York City skyline at dusk from a riverside bench" loading="lazy" width="373" height="560" />
+          <span class="life-caption">New York, lately</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-4-trail.webp" alt="A hiker looking out over layered mountain ridges" loading="lazy" width="373" height="560" />
+          <span class="life-caption">Wherever it leads</span>
+        </span>
+      </button>
+    </div>
+    <div class="life-arm">
+      <button class="life-card" type="button">
+        <span class="life-card-face">
+          <img src="assets/life/life-7-travel.webp" alt="View from an airplane window over clouds at golden hour" loading="lazy" width="373" height="560" />
+          <span class="life-caption">Over the Pacific</span>
+        </span>
+      </button>
+    </div>
+  </div>
+</section>
+
 <section class="section contact-section" id="contact">
   <div class="section-inner reveal">
     <p class="section-label">Contact</p>
@@ -185,6 +274,10 @@
   <a href="#top">back to top</a>
 </footer>
 
-<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie_light.min.js" defer></script>
+<script src="particle-text.js" defer></script>
+<script src="terminal-anim.js" defer></script>
+<script src="life-spread.js" defer></script>
+<script src="script.js" defer></script>
 </body>
 </html>

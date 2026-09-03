@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+dist-ssr/
+
+# Local scratch / test artifacts
+.tmp-test/
+
+# Editor / OS
+.DS_Store
+*.local
+
+# Env
+.env
+.env.local
+.vercel

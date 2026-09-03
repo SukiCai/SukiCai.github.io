@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Suki Cai</title>
+<meta name="description" content="Yufei (Suki) Cai — Software Engineer at Munich Re." />
+
+<meta name="theme-color" content="#fbfaf8" />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232f5fdb'/%3E%3Ctext x='50%25' y='58%25' text-anchor='middle' font-family='Georgia, serif' font-style='italic' font-size='38' fill='%23fbfaf8'%3ES%3C/text%3E%3C/svg%3E" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Suki Cai" />
+<meta property="og:description" content="Nice to meet you, I'm Suki." />
+<meta property="og:url" content="https://sukicai.github.io/landing.html" />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="Suki Cai" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<div class="noise"></div>
+
+<main class="landing-stage" id="landingStage">
+  <canvas class="landing-landscape" id="landscapeCanvas" aria-hidden="true"></canvas>
+
+  <div class="landing-terminal-wrap" id="stageTerminal">
+    <div class="terminal" aria-hidden="true">
+      <div class="terminal-bar">
+        <span class="term-dot term-dot-red"></span>
+        <span class="term-dot term-dot-yellow"></span>
+        <span class="term-dot term-dot-green"></span>
+        <span class="terminal-title">zsh — suki</span>
+      </div>
+      <div class="terminal-body">
+        <div class="terminal-line">
+          <span class="term-prompt">$</span>
+          <span class="term-cmd" id="termCmd"></span><span class="term-cursor" id="termCursor"></span>
+        </div>
+        <div class="term-output" id="termOutput"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="landing-greeting" id="stageGreeting">
+    <p class="landing-greeting-line" id="greetHeading">
+      <span class="particle-name-text">Nice to meet you,</span>
+      <canvas class="particle-canvas" id="greetCanvas" aria-hidden="true"></canvas>
+    </p>
+    <h1 class="landing-signature-line" id="signatureHeading">
+      <span class="particle-name-text">I'm Suki</span>
+      <canvas class="particle-canvas" id="signatureCanvas" aria-hidden="true"></canvas>
+    </h1>
+    <a href="index.html" class="landing-scroll-hint" id="landingEnter">
+      <span class="scroll-hint-mouse" aria-hidden="true"></span>
+      Scroll to step in
+    </a>
+  </div>
+</main>
+
+<div class="mask-reveal" id="maskReveal" aria-hidden="true">
+  <div class="mask-reveal-frame-wrap">
+    <iframe class="mask-reveal-frame" id="maskRevealFrame" title="" tabindex="-1"></iframe>
+    <div class="mask-reveal-scrim"></div>
+  </div>
+</div>
+
+<script src="particle-text.js" defer></script>
+<script src="terminal-anim.js" defer></script>
+<script src="scroll-mask.js" defer></script>
+<script type="module" src="landscape-scene.js"></script>
+<script src="landing.js" defer></script>
+</body>
+</html>
