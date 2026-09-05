@@ -28,7 +28,7 @@ export const INTRO_TERMINAL_LINES = [
 
 export const ABOUT = {
   paragraphs: [
-    "Software engineer is accurate — and incomplete. I keep taking problems that sit outside a clean SWE lane: mammogram pipelines at BC Cancer, dark-web risk models with law enforcement partners, HCI systems under NSERC, building Look4 from first-year sales to head of the group’s career division, then a week-long POC that unlocked a year-long underwriting rebuild at Munich Re. I would rather try the thing without a playbook than optimize a path everyone already knows.",
+    "Software engineer is accurate — and incomplete. I keep taking problems that sit outside a clean SWE lane: mammogram pipelines at BC Cancer, dark-web risk models with law enforcement partners, human-computer interaction systems under NSERC, building LOOK4 Education from first-year sales to CAREER Principal, then a week-long POC that unlocked a year-long underwriting rebuild at Munich Re. I would rather try the thing without a playbook than optimize a path everyone already knows.",
     "Now I ship production systems in New York — multi-tenant underwriting, Kubernetes workers off the request path, clinical document pipelines that strip PII first — while building ShouldI, a human-in-the-loop decision agent stack against the “let the model decide” default. Same pattern as always: push the boundary, stay accountable for the call. Tools write more of the code. I still decide what is worth attempting.",
   ],
   stats: [
@@ -44,52 +44,83 @@ export const ABOUT = {
         { where: 'Munich Re', kind: 'Full-time', what: 'Software Engineer — underwriting platform, on-call, clinical document pipelines.' },
         { where: 'UC Berkeley', kind: 'M.S.', what: 'Software Engineering & Molecular Science · MSSE Merit Scholarship · May 2026.' },
         { where: 'ShouldI', kind: 'Building', what: 'Human-in-the-loop decision agent stack — still shipping.' },
-        { where: 'Look4', kind: 'Leadership', what: 'Head of Career Division, Look4 Group — after sales → manager → VP through undergrad.' },
+        {
+          where: 'LOOK4 Education',
+          kind: 'CAREER Principal',
+          what: 'LOOK4 CAREER Principal — after sales → manager → VP through undergrad.',
+          href: 'https://look4tutor.com/en/',
+        },
       ],
     },
     {
       when: '2023–24',
       lanes: [
         { where: 'UBC Data Science Institute', kind: 'Co-op', what: 'Data Scientist — NLP and large language models.' },
-        { where: 'UBC', kind: 'TA', what: 'STAT251 · CPSC404 — office hours and tutorials.' },
-        { where: 'Look4Tutor', kind: 'Sales VP', what: 'Years 3–5 — sales leadership and a 60+ student team through graduation.' },
+        { where: 'UBC', kind: 'Teaching Assistant', what: 'STAT251 · CPSC404 — office hours and tutorials.' },
+        {
+          where: 'LOOK4 Education',
+          kind: 'Sales VP',
+          what: 'Years 3–5 — sales leadership and a 60+ student team through graduation.',
+          href: 'https://look4tutor.com/en/',
+        },
       ],
     },
     {
       when: '2023',
       lanes: [
         { where: 'AWS', kind: 'Intern', what: 'Cloud Engineer — high-severity EC2 / S3 / IAM / Lambda / VPC; automated recurring triage.' },
-        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn — AI Analyst on DICOM mammograms and structured reports (overlapped into 2023).' },
+        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn, 20h/week — AI Analyst on DICOM mammograms and structured reports (overlapped into 2023).' },
       ],
     },
     {
       when: '2022–23',
       lanes: [
-        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn — OpenCV breast segmentation, DICOM structured reports for early detection.' },
-        { where: 'UBC', kind: 'TA', what: 'CPSC304 Project Lead TA — tutorials and office hours.' },
-        { where: 'Look4Tutor', kind: 'Sales VP', what: 'Year 3+ — sales VP while finishing undergrad.' },
+        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn, 20h/week — OpenCV breast segmentation, DICOM structured reports for early detection.' },
+        { where: 'UBC', kind: 'Teaching Assistant', what: 'CPSC304 Project Lead Teaching Assistant — tutorials and office hours.' },
+        {
+          where: 'LOOK4 Education',
+          kind: 'Sales VP',
+          what: 'Year 3+ — sales VP while finishing undergrad.',
+          href: 'https://look4tutor.com/en/',
+        },
       ],
     },
     {
       when: '2022',
       lanes: [
         { where: 'Citi', kind: 'Co-op', what: 'Full-stack engineer on a multi-billion-dollar fixed-income platform.' },
-        { where: 'ICCRC', kind: 'Co-op', what: 'ML Engineer — dark-web risk tools with law-enforcement partners.' },
+        { where: 'International Cyber Crime Research Center', kind: 'Co-op', what: 'Machine Learning Engineer — dark-web risk tools with law-enforcement partners.' },
       ],
     },
     {
       when: '2021–22',
       lanes: [
-        { where: 'UBC HCI', kind: 'Research', what: 'Research assistant — interactive systems for communication and collaboration (NSERC).' },
-        { where: 'UBC Psychology', kind: 'Part-time intern', what: 'UBC Work-Learn — frontend on Polarus, React Native / TypeScript, iOS and Android.' },
-        { where: 'Look4Tutor', kind: 'Sales Manager', what: 'Year 2 — promoted from first-year sales.' },
+        { where: 'UBC Human-Computer Interaction', kind: 'Research', what: 'Research assistant — interactive systems for communication and collaboration (NSERC).' },
+        { where: 'UBC Psychology', kind: 'Part-time intern', what: 'UBC Work-Learn, 20h/week — frontend on Polarus, React Native / TypeScript, iOS and Android.' },
+        {
+          where: 'Google',
+          kind: 'Mentee',
+          what: 'CS Research Mentorship Program (CSRMP) — mentee; later invited as a panelist.',
+          href: 'https://research.google/programs-and-events/csrmp/',
+        },
+        {
+          where: 'LOOK4 Education',
+          kind: 'Sales Manager',
+          what: 'Year 2 — promoted from first-year sales.',
+          href: 'https://look4tutor.com/en/',
+        },
       ],
     },
     {
       when: '2019–24',
       lanes: [
-        { where: 'UBC', kind: 'Degree', what: 'B.S. Computer Science and Statistics, Distinction, Co-op. Google CSRMP ’21. Years of TA work across CS, stats, and physics. Hosted a 500+ UBC Chinese Opening Ceremony.' },
-        { where: 'Look4Tutor', kind: 'Sales → VP', what: 'Y1 sales → Y2 sales manager → Y3–Y5 sales VP → Head of Career Division, Look4 Group after graduation.' },
+        { where: 'UBC', kind: 'Degree', what: 'B.S. Computer Science and Statistics, Distinction, Co-op. Years as a Teaching Assistant across CS, stats, and physics. Hosted a 500+ UBC Chinese Opening Ceremony.' },
+        {
+          where: 'LOOK4 Education',
+          kind: 'Sales → VP',
+          what: 'Y1 sales → Y2 sales manager → Y3–Y5 sales VP → LOOK4 CAREER Principal after graduation.',
+          href: 'https://look4tutor.com/en/',
+        },
       ],
     },
   ],
@@ -302,7 +333,7 @@ export const HERO = {
   headline: 'Software Engineer at Munich Re · New York',
   subhead: 'M.S. Software Engineering & Molecular Science, UC Berkeley · B.S. CS & Statistics, UBC',
   typewriter:
-    'More than a software engineer — cancer imaging, dark-web ML, HCI, underwriting rebuilds, and decision agents without a playbook. Open to people building the same way.',
+    'I ship bets without a playbook — a two-month underwriting rebuild, production systems that stay up at 2am, and decision agents that refuse to replace the human.',
   pills: [
     { href: '#work', label: 'Selected work', external: false },
     { href: '#notes', label: 'Notes', external: false },

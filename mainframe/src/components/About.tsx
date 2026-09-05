@@ -69,7 +69,18 @@ export function About() {
                 {beat.lanes.map((lane) => (
                   <div className="about-path-lane" key={`${beat.when}-${lane.where}-${lane.kind}`}>
                     <div className="about-path-lane-head">
-                      <strong>{lane.where}</strong>
+                      {lane.href ? (
+                        <a
+                          className="about-path-org"
+                          href={lane.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {lane.where}
+                        </a>
+                      ) : (
+                        <strong>{lane.where}</strong>
+                      )}
                       {lane.kind && <span className="about-path-kind">{lane.kind}</span>}
                     </div>
                     <span>{lane.what}</span>
