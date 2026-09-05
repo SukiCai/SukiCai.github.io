@@ -26,10 +26,9 @@ export function About() {
             <ScrollReveal
               key={paragraph.slice(0, 32)}
               textClassName="about-text"
-              enableBlur
+              enableBlur={false}
               baseOpacity={0.28}
-              baseRotation={0.6}
-              blurStrength={2.4}
+              baseRotation={0}
               rotationEnd="top 55%"
               wordAnimationEnd="top 45%"
             >

@@ -39,10 +39,9 @@ export function Writing() {
             ) : (
               <ScrollReveal
                 textClassName="post-meta"
-                enableBlur
+                enableBlur={false}
                 baseOpacity={0.35}
                 baseRotation={0}
-                blurStrength={2}
                 rotationEnd="top 70%"
                 wordAnimationEnd="top 58%"
               >
@@ -55,10 +54,9 @@ export function Writing() {
               ) : (
                 <ScrollReveal
                   key={paragraph.slice(0, 24)}
-                  enableBlur
+                  enableBlur={false}
                   baseOpacity={0.22}
-                  baseRotation={0.4}
-                  blurStrength={2.2}
+                  baseRotation={0}
                   rotationEnd="top 52%"
                   wordAnimationEnd="top 42%"
                 >

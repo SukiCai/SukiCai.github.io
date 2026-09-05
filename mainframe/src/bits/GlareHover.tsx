@@ -92,7 +92,7 @@ export default function GlareHover({
           backgroundRepeat: 'no-repeat',
           backgroundPosition: '-100% -100%, 0 0',
           pointerEvents: 'none',
-          zIndex: 1,
+          zIndex: 0,
         }}
       />
       {children}

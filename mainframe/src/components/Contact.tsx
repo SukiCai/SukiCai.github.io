@@ -15,10 +15,9 @@ export function Contact() {
         ) : (
           <ScrollReveal
             textClassName="contact-text"
-            enableBlur
+            enableBlur={false}
             baseOpacity={0.3}
-            baseRotation={0.4}
-            blurStrength={2}
+            baseRotation={0}
             rotationEnd="top 70%"
             wordAnimationEnd="top 60%"
           >

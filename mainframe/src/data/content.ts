@@ -55,6 +55,9 @@ export interface WorkItem {
   result?: string
   noteHref?: string
   noteLabel?: string
+  demoHref?: string
+  demoLabel?: string
+  demoVideo?: string
 }
 
 export const WORK_ITEMS: WorkItem[] = [
@@ -79,18 +82,14 @@ export const WORK_ITEMS: WorkItem[] = [
     noteLabel: 'Notes on trusting a pipeline, not a prompt',
   },
   {
-    title: 'Genomic Research Platform',
-    meta: 'Sponsored by Broad Institute · 2026',
-    stack: 'FastAPI · Next.js · D3.js · Web Workers',
+    title: 'ShouldI',
+    meta: 'Personal · In progress · Human-in-the-loop decision agents',
+    stack: 'Expo · Hono · Zod · Hermes agent stack',
     description:
-      'Scientists needed to explore multi-gigabyte genomic datasets without waiting on a batch job or freezing the browser. I led the build: async pipelines on the backend, chunked processing and Web Workers on the client, so plots with a million-plus points stay interactive.',
-  },
-  {
-    title: 'Serverless E-commerce Platform',
-    meta: 'Sponsored by Amazon · 2023',
-    stack: 'Lambda · DynamoDB · Cognito',
-    description:
-      'Led an 8-person team through an event-driven serverless architecture: auth with Cognito, state in DynamoDB, compute that scales with the request instead of the forecast. The design constraint was burst traffic — absorb a spike without paying for idle capacity the rest of the year.',
+      'People do not lack advice — they lack a clean decision. ShouldI runs a multi-agent stack on high-stakes “Should I…?” calls: structured intake, domain expert routing, challenge modes that attack fixed assumptions, then a YES/NO with rationale. The human stays in the loop — the agents sharpen the call; they do not take it. We rebuilt that agent layer end-to-end (prompt contracts, Hermes adapters, briefing and choice protocols) so the product is a decision protocol, not a chat with better memory: Expo stays thin, Hono proxies Hermes behind shared Zod schemas. While the industry races toward agents that act for you, ShouldI compounds judgment by keeping the decider human.',
+    result: 'Human-in-the-loop decision agents — judgment stays with the person.',
+    noteHref: '#writing-human-loop',
+    noteLabel: 'Why human-in-the-loop still matters',
   },
 ]
 
@@ -98,9 +97,26 @@ export interface EarlierItem {
   title: string
   meta: string
   line: string
+  demoHref?: string
+  demoLabel?: string
+  demoVideo?: string
+  demoImage?: string
+  demoImageAlt?: string
 }
 
 export const EARLIER_ITEMS: EarlierItem[] = [
+  {
+    title: 'Genomic Research Platform',
+    meta: 'Sponsored by Broad Institute · 2026 · FastAPI · Next.js · D3 · Deck.gl',
+    line: 'Led the build for multi-GB genomic exploration — async pipelines, chunked client processing, and Web Workers so million-point plots stay interactive.',
+    demoHref: 'https://broad-1-26.vercel.app/',
+    demoLabel: 'Live demo',
+  },
+  {
+    title: 'Serverless E-commerce Platform',
+    meta: 'Sponsored by Amazon · 2023 · Lambda · DynamoDB · Cognito',
+    line: 'Led an 8-person team on an event-driven serverless stack sized for burst traffic — absorb a spike without paying for idle capacity the rest of the year.',
+  },
   {
     title: 'Frontend, Munich Re intern',
     meta: 'Toronto · Summer 2023',
@@ -115,6 +131,20 @@ export const EARLIER_ITEMS: EarlierItem[] = [
     title: 'Fixed-income platform, Citi intern',
     meta: 'Mississauga · Summer 2022',
     line: 'Full-stack analytics on a multi-billion-dollar trading platform: Spring Boot, Angular, real-time retrieval, multi-party institutional reporting, and tracing on the paths traders actually wait on.',
+  },
+  {
+    title: 'World Life Expectancy (D3)',
+    meta: 'UBC · D3.js',
+    line: 'Interactive dashboard — map, year scrubber, and linked scatterplots for global life expectancy.',
+    demoImage: '/assets/work/life-expectancy.gif',
+    demoImageAlt: 'Animated preview of the World Life Expectancy D3 dashboard',
+  },
+  {
+    title: 'Machine Learning Web App',
+    meta: 'UBC · Freshman year · Jan 2020 · 3 days',
+    line: 'End-to-end ML web app built in three days, before GPT existed.',
+    demoImage: '/assets/work/ml-web-app.gif',
+    demoImageAlt: 'Animated preview of the machine learning web app',
   },
 ]
 
@@ -169,6 +199,17 @@ export const WRITING_POSTS = [
       'A radiology report is not a chat. It is a document that arrived with a person attached to it, and the useful part is a handful of structured fields that underwriting actually consumes. The rest is residue — including names, dates, and identifiers that should never leave the extraction step.',
       'The three pipelines I productionized (radiology, sleep, procedure) all do the same unglamorous things first: de-identify, validate, feature-flag the rollout. A better prompt does not get to skip that. A model upgrade ships to one book of business, not to production as an idea.',
       'I would rather own a boring pipeline that can be rolled back than a clever completion that cannot explain what it touched. The prompt is an implementation detail. The contract is the pipeline.',
+    ],
+  },
+  {
+    id: 'writing-human-loop',
+    title: 'Why keep the human in the loop — especially now',
+    meta: 'Notes from building ShouldI',
+    paragraphs: [
+      'The default story in 2026 is that agents should act for you: book the flight, send the email, accept the offer. That is a useful story for chores. It is a dangerous story for decisions that rewrite a life — career, money, relationship, immigration runway. Those calls are not incomplete chat threads. They are commitments you still have to live inside after the model stops talking.',
+      'Memory does not solve this. A model that remembers your preferences can still sound certain while skipping the constraint that actually mattered — visa timing, a partner\'s non-negotiable, the offer you cannot reverse in six months. Autonomy without ownership just moves the failure mode: from "I did not know" to "the agent decided and I cannot explain why."',
+      'Human-in-the-loop is not a safety sticker we glued on at the end. It is the product shape. On ShouldI the agent stack runs intake, routes domain experts, and challenges fixed assumptions — then stops at a YES/NO the person still has to own. The agents sharpen the call. They do not take it. That boundary is what makes the system compound judgment instead of outsourcing it.',
+      'Later, when agents are cheaper and more capable, this only matters more. The scarce thing will not be another answer. It will be a person who can still say: this was my call, these were the tradeoffs, and I can defend them.',
     ],
   },
 ]

@@ -7,7 +7,7 @@ import Magnet from '../bits/Magnet'
 import GlareHover from '../bits/GlareHover'
 
 const pillClass =
-  'relative z-[1] inline-flex items-center justify-center whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:bg-black hover:text-white sm:px-5 sm:text-[15px] active:scale-[0.97]'
+  'relative z-[2] inline-flex items-center justify-center whitespace-nowrap rounded-full border border-black/10 bg-white px-4 py-[0.3em] text-[13px] text-black transition-colors duration-200 hover:border-black/20 hover:bg-black/[0.06] sm:px-5 sm:text-[15px] active:scale-[0.97]'
 
 function MagneticPill({ children, disabled }: { children: ReactNode; disabled: boolean }) {
   return (

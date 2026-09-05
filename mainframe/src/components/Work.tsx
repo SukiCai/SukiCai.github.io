@@ -4,6 +4,27 @@ import SpotlightCard from '../bits/SpotlightCard'
 import { SectionLabel } from './SectionLabel'
 import { useReducedMotion } from '../hooks/useReducedMotion'
 
+function DemoVideo({ src }: { src: string }) {
+  return (
+    <video
+      className="work-demo-video"
+      src={src}
+      controls
+      muted
+      playsInline
+      preload="metadata"
+      controlsList="nodownload"
+      onVolumeChange={(e) => {
+        const el = e.currentTarget
+        if (!el.muted) el.muted = true
+        if (el.volume !== 0) el.volume = 0
+      }}
+    >
+      <a href={src}>Watch demo</a>
+    </video>
+  )
+}
+
 function WorkArticle({ item }: { item: (typeof WORK_ITEMS)[number] }) {
   const ref = useReveal<HTMLElement>()
   const reduced = useReducedMotion()
@@ -27,6 +48,20 @@ function WorkArticle({ item }: { item: (typeof WORK_ITEMS)[number] }) {
           </>
         )}
       </p>
+      {item.demoHref && (
+        <p className="work-demo">
+          <a
+            href={item.demoHref}
+            className="inline-arrow-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.demoLabel ?? 'Live demo'}
+            <span className="arrow">&rarr;</span>
+          </a>
+        </p>
+      )}
+      {item.demoVideo && <DemoVideo src={item.demoVideo} />}
       {item.result && <p className="work-result">{item.result}</p>}
     </>
   )
@@ -83,6 +118,28 @@ function EarlierRow({ item }: { item: (typeof EARLIER_ITEMS)[number] }) {
         <span className="work-meta">{item.meta}</span>
       </div>
       <p>{item.line}</p>
+      {item.demoHref && (
+        <p className="work-demo">
+          <a
+            href={item.demoHref}
+            className="inline-arrow-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            {item.demoLabel ?? 'Live demo'}
+            <span className="arrow">&rarr;</span>
+          </a>
+        </p>
+      )}
+      {item.demoImage && (
+        <img
+          className="work-demo-image"
+          src={item.demoImage}
+          alt={item.demoImageAlt ?? ''}
+          loading="lazy"
+        />
+      )}
+      {item.demoVideo && <DemoVideo src={item.demoVideo} />}
     </>
   )
 
