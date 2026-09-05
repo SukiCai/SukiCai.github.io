@@ -4,8 +4,8 @@ import { prefersReducedMotion } from './useReducedMotion'
 
 /**
  * Maps pointer X across the viewport to video.currentTime.
- * Seeks are capped to one in-flight decode, and queued on rAF so a busy
- * decoder never gets a seek per mousemove event.
+ * With an all-intra source, seeking every frame is cheap — keep a persistent
+ * rAF that always chases the latest target so scrubbing stays continuous.
  */
 export function useVideoScrub(videoRef: RefObject<HTMLVideoElement | null>, enabled = true) {
   useEffect(() => {
@@ -15,48 +15,67 @@ export function useVideoScrub(videoRef: RefObject<HTMLVideoElement | null>, enab
     if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
 
     let targetTime = 0
-    let seeking = false
     let raf = 0
-    let dirty = false
+    let running = false
+    let idleTimer = 0
+    const FPS = 24
+    const FRAME = 1 / FPS
 
-    const apply = () => {
+    const stop = () => {
+      running = false
+      if (raf) {
+        window.cancelAnimationFrame(raf)
+        raf = 0
+      }
+    }
+
+    const tick = () => {
       raf = 0
-      if (!dirty) return
-      dirty = false
       const duration = video.duration
-      if (!duration || Number.isNaN(duration)) return
-      if (seeking) return
-      if (Math.abs(video.currentTime - targetTime) < 1 / 48) return
-      seeking = true
-      video.currentTime = targetTime
+      if (!duration || Number.isNaN(duration)) {
+        if (running) raf = window.requestAnimationFrame(tick)
+        return
+      }
+
+      // Skip if a seek is still decoding — apply again on the next frame.
+      if (!video.seeking) {
+        const delta = targetTime - video.currentTime
+        if (Math.abs(delta) >= FRAME * 0.4) {
+          video.currentTime = targetTime
+        }
+      }
+
+      if (running) raf = window.requestAnimationFrame(tick)
     }
 
-    const queue = () => {
-      dirty = true
-      if (!raf) raf = window.requestAnimationFrame(apply)
-    }
-
-    const onSeeked = () => {
-      seeking = false
-      if (Math.abs(video.currentTime - targetTime) >= 1 / 48) queue()
+    const start = () => {
+      if (running) return
+      running = true
+      raf = window.requestAnimationFrame(tick)
     }
 
     const onMove = (e: PointerEvent) => {
       const duration = video.duration
       if (!duration || Number.isNaN(duration)) return
       const x = Math.min(1, Math.max(0, e.clientX / window.innerWidth))
-      const fps = 24
-      const frame = Math.round(x * Math.max(0, duration * fps - 1))
-      targetTime = frame / fps
-      queue()
+      const frame = Math.round(x * Math.max(0, duration * FPS - 1))
+      targetTime = frame * FRAME
+      start()
+      window.clearTimeout(idleTimer)
+      // Keep chasing briefly after the pointer stops so the last seek lands.
+      idleTimer = window.setTimeout(stop, 120)
     }
 
-    video.addEventListener('seeked', onSeeked)
+    video.addEventListener('loadedmetadata', () => {
+      // Warm the decoder on the first frame so the first scrub isn't cold.
+      if (!video.seeking) video.currentTime = 0
+    })
+
     window.addEventListener('pointermove', onMove, { passive: true })
 
     return () => {
-      if (raf) window.cancelAnimationFrame(raf)
-      video.removeEventListener('seeked', onSeeked)
+      window.clearTimeout(idleTimer)
+      stop()
       window.removeEventListener('pointermove', onMove)
     }
   }, [videoRef, enabled])

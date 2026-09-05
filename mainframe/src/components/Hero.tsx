@@ -65,7 +65,7 @@ export function Hero({ active = true }: { active?: boolean }) {
       style={{ fontFamily: 'var(--font-body)' }}
     >
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#e8e6e3]/70 via-[#e8e6e3]/18 to-transparent md:[mask-image:linear-gradient(to_bottom,black_0%,black_72%,transparent_100%)] md:[-webkit-mask-image:linear-gradient(to_bottom,black_0%,black_72%,transparent_100%)]"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-[#aba398]/40 via-transparent to-transparent"
         aria-hidden="true"
       />
 
