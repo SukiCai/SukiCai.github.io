@@ -110,48 +110,39 @@ function EarlierWork() {
 
 function EarlierRow({ item }: { item: (typeof EARLIER_ITEMS)[number] }) {
   const ref = useReveal<HTMLLIElement>()
-  const reduced = useReducedMotion()
-  const body = (
-    <>
+
+  return (
+    <li className="earlier-item reveal" ref={ref}>
       <div className="earlier-head">
         <h3>{item.title}</h3>
         <span className="work-meta">{item.meta}</span>
       </div>
-      <p>{item.line}</p>
-      {item.demoHref && (
-        <p className="work-demo">
-          <a
-            href={item.demoHref}
-            className="inline-arrow-link"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {item.demoLabel ?? 'Live demo'}
-            <span className="arrow">&rarr;</span>
-          </a>
-        </p>
-      )}
+      <p>
+        {item.line}
+        {item.demoHref && (
+          <>
+            {' '}
+            <a
+              href={item.demoHref}
+              className="inline-arrow-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {item.demoLabel ?? 'Live demo'}
+              <span className="arrow">&rarr;</span>
+            </a>
+          </>
+        )}
+      </p>
       {item.demoImage && (
         <img
-          className="work-demo-image"
+          className="work-demo-image earlier-demo-image"
           src={item.demoImage}
           alt={item.demoImageAlt ?? ''}
           loading="lazy"
         />
       )}
       {item.demoVideo && <DemoVideo src={item.demoVideo} />}
-    </>
-  )
-
-  return (
-    <li className="earlier-item reveal" ref={ref}>
-      {reduced ? (
-        body
-      ) : (
-        <SpotlightCard className="work-spotlight" spotlightColor="rgba(47, 95, 219, 0.1)">
-          {body}
-        </SpotlightCard>
-      )}
     </li>
   )
 }

@@ -326,7 +326,7 @@ button {
   display: grid;
   grid-template-columns: 72px 1fr;
   gap: 16px;
-  padding: 14px 0;
+  padding: 16px 0;
   border-top: 1px solid var(--line);
 }
 
@@ -341,19 +341,54 @@ button {
   padding-top: 2px;
 }
 
-.about-path-body {
+.about-path-lanes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  position: relative;
+}
+
+.about-path-parallel .about-path-lanes {
+  padding-left: 12px;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.about-path-parallel-label {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: -4px;
+}
+
+.about-path-lane {
   display: flex;
   flex-direction: column;
   gap: 4px;
 }
 
-.about-path-body strong {
+.about-path-lane-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.about-path-lane strong {
   font-size: 15px;
   font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-.about-path-body span {
+.about-path-kind {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+}
+
+.about-path-lane > span:last-child {
   font-size: 14px;
   line-height: 1.5;
   color: var(--ink-soft);
@@ -489,7 +524,7 @@ button {
 }
 
 .earlier-item {
-  padding: 18px 0;
+  padding: 14px 0;
   border-bottom: 1px solid var(--line);
 }
 
@@ -503,11 +538,11 @@ button {
   justify-content: space-between;
   gap: 12px;
   flex-wrap: wrap;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .earlier-head h3 {
-  font-size: 16px;
+  font-size: 15px;
   margin: 0;
   letter-spacing: -0.01em;
   font-weight: 600;
@@ -515,9 +550,15 @@ button {
 
 .earlier-item p {
   margin: 0;
-  font-size: 14px;
-  line-height: 1.55;
+  font-size: 13.5px;
+  line-height: 1.5;
   color: var(--ink-soft);
+}
+
+.earlier-demo-image {
+  width: min(100%, 320px);
+  margin-top: 10px;
+  margin-bottom: 2px;
 }
 
 /* ---------------- Field notes ---------------- */

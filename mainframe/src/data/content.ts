@@ -28,22 +28,70 @@ export const INTRO_TERMINAL_LINES = [
 
 export const ABOUT = {
   paragraphs: [
-    "I like systems with clear ownership boundaries and code that survives contact with real users. Most of my days are spent on insurance infrastructure at Munich Re in New York — multi-tenant case management, Kubernetes workers that stay out of the request path, and Azure OpenAI pipelines that have to de-identify a document before anyone else sees it.",
-    "I got here by shipping under constraint: a trading floor at Citi, high-severity incidents at AWS, a week-long proof before a year-long bet at Munich Re, and sponsored work with Amazon and the Broad Institute. For four years I was a Lead TA at UBC — CS, statistics, physics, a thousand-plus students. I am finishing an M.S. in Software Engineering at UC Berkeley. Lately I build with Claude Code and MCP. The tools write more of the code. I still make the architectural decisions.",
+    "Software engineer is accurate — and incomplete. I keep taking problems that sit outside a clean SWE lane: mammogram pipelines at BC Cancer, dark-web risk models with law enforcement partners, HCI systems under NSERC, building Look4 from first-year sales to head of the group’s career division, then a week-long POC that unlocked a year-long underwriting rebuild at Munich Re. I would rather try the thing without a playbook than optimize a path everyone already knows.",
+    "Now I ship production systems in New York — multi-tenant underwriting, Kubernetes workers off the request path, clinical document pipelines that strip PII first — while building ShouldI, a human-in-the-loop decision agent stack against the “let the model decide” default. Same pattern as always: push the boundary, stay accountable for the call. Tools write more of the code. I still decide what is worth attempting.",
   ],
   stats: [
     { value: '2 mo', label: 'to rebuild a core underwriting platform' },
     { value: '5 teams', label: 'shipping on AI-assisted workflows I designed' },
     { value: '3 pipelines', label: 'clinical documents in production, with PII stripped first' },
-    { value: '4 years', label: 'Lead TA at UBC — CS, stats, physics, 1,000+ students' },
+    { value: '500+', label: 'students at a UBC opening I planned and hosted' },
   ],
   path: [
-    { when: 'Now', where: 'New York', what: 'Software Engineer at Munich Re. Finishing an M.S. in Software Engineering at UC Berkeley (MSSE Merit Scholarship). Open to relocation.' },
-    { when: '2026', where: 'Broad Institute', what: 'Technical lead on a sponsored genomic research platform — async FastAPI pipelines and Web Worker viz for multi-GB datasets.' },
-    { when: '2024—', where: 'Munich Re', what: 'Rebuilt the enterprise underwriting workbench in two months. Primary on-call. Productionized three clinical document pipelines.' },
-    { when: '2023', where: 'AWS', what: 'Cloud Support intern. High-severity incidents across EC2, S3, IAM, Lambda, and VPC; automated the triage we kept repeating.' },
-    { when: '2022', where: 'Citi', what: 'Software Engineer intern on a multi-billion-dollar fixed-income platform — Spring Boot, Angular, latency-sensitive reporting.' },
-    { when: '2019–24', where: 'UBC', what: 'B.S. Computer Science and Statistics, High Distinction. Lead TA — first woman in the role in ten years. Google CS Research Mentorship Program Scholar.' },
+    {
+      when: 'Now',
+      lanes: [
+        { where: 'Munich Re', kind: 'Full-time', what: 'Software Engineer — underwriting platform, on-call, clinical document pipelines.' },
+        { where: 'UC Berkeley', kind: 'M.S.', what: 'Software Engineering & Molecular Science · MSSE Merit Scholarship · May 2026.' },
+        { where: 'ShouldI', kind: 'Building', what: 'Human-in-the-loop decision agent stack — still shipping.' },
+        { where: 'Look4', kind: 'Leadership', what: 'Head of Career Division, Look4 Group — after sales → manager → VP through undergrad.' },
+      ],
+    },
+    {
+      when: '2023–24',
+      lanes: [
+        { where: 'UBC Data Science Institute', kind: 'Co-op', what: 'Data Scientist — NLP and large language models.' },
+        { where: 'UBC', kind: 'TA', what: 'STAT251 · CPSC404 — office hours and tutorials.' },
+        { where: 'Look4Tutor', kind: 'Sales VP', what: 'Years 3–5 — sales leadership and a 60+ student team through graduation.' },
+      ],
+    },
+    {
+      when: '2023',
+      lanes: [
+        { where: 'AWS', kind: 'Intern', what: 'Cloud Engineer — high-severity EC2 / S3 / IAM / Lambda / VPC; automated recurring triage.' },
+        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn — AI Analyst on DICOM mammograms and structured reports (overlapped into 2023).' },
+      ],
+    },
+    {
+      when: '2022–23',
+      lanes: [
+        { where: 'BC Cancer', kind: 'Part-time intern', what: 'UBC Work-Learn — OpenCV breast segmentation, DICOM structured reports for early detection.' },
+        { where: 'UBC', kind: 'TA', what: 'CPSC304 Project Lead TA — tutorials and office hours.' },
+        { where: 'Look4Tutor', kind: 'Sales VP', what: 'Year 3+ — sales VP while finishing undergrad.' },
+      ],
+    },
+    {
+      when: '2022',
+      lanes: [
+        { where: 'Citi', kind: 'Co-op', what: 'Full-stack engineer on a multi-billion-dollar fixed-income platform.' },
+        { where: 'ICCRC', kind: 'Co-op', what: 'ML Engineer — dark-web risk tools with law-enforcement partners.' },
+      ],
+    },
+    {
+      when: '2021–22',
+      lanes: [
+        { where: 'UBC HCI', kind: 'Research', what: 'Research assistant — interactive systems for communication and collaboration (NSERC).' },
+        { where: 'UBC Psychology', kind: 'Part-time intern', what: 'UBC Work-Learn — frontend on Polarus, React Native / TypeScript, iOS and Android.' },
+        { where: 'Look4Tutor', kind: 'Sales Manager', what: 'Year 2 — promoted from first-year sales.' },
+      ],
+    },
+    {
+      when: '2019–24',
+      lanes: [
+        { where: 'UBC', kind: 'Degree', what: 'B.S. Computer Science and Statistics, Distinction, Co-op. Google CSRMP ’21. Years of TA work across CS, stats, and physics. Hosted a 500+ UBC Chinese Opening Ceremony.' },
+        { where: 'Look4Tutor', kind: 'Sales → VP', what: 'Y1 sales → Y2 sales manager → Y3–Y5 sales VP → Head of Career Division, Look4 Group after graduation.' },
+      ],
+    },
   ],
 }
 
@@ -107,42 +155,52 @@ export interface EarlierItem {
 export const EARLIER_ITEMS: EarlierItem[] = [
   {
     title: 'Genomic Research Platform',
-    meta: 'Sponsored by Broad Institute · 2026 · FastAPI · Next.js · D3 · Deck.gl',
-    line: 'Led the build for multi-GB genomic exploration — async pipelines, chunked client processing, and Web Workers so million-point plots stay interactive.',
+    meta: 'Broad Institute · 2026',
+    line: 'Tech lead on multi-GB genomic exploration — async pipelines and Web Workers so million-point plots stay interactive.',
     demoHref: 'https://broad-1-26.vercel.app/',
     demoLabel: 'Live demo',
   },
   {
-    title: 'Serverless E-commerce Platform',
-    meta: 'Sponsored by Amazon · 2023 · Lambda · DynamoDB · Cognito',
-    line: 'Led an 8-person team on an event-driven serverless stack sized for burst traffic — absorb a spike without paying for idle capacity the rest of the year.',
+    title: 'Serverless E-commerce',
+    meta: 'Amazon · 2023',
+    line: 'Led 8 engineers on Lambda · DynamoDB · Cognito — sized for burst traffic without idle capacity.',
   },
   {
-    title: 'Frontend, Munich Re intern',
-    meta: 'Toronto · Summer 2023',
-    line: 'Led a 3-engineer team on a production Next.js / MUI app. A metadata-driven component framework cut frontend duplication by about 40% and became a pattern in the shared UI libraries, with Jest standards to match.',
+    title: 'Frontend intern',
+    meta: 'Munich Re · Summer 2023',
+    line: 'Led 3 engineers on Next.js / MUI; metadata-driven components cut frontend duplication ~40%.',
   },
   {
-    title: 'Cloud Support, AWS intern',
-    meta: 'Toronto · Winter 2023',
-    line: 'High-severity incidents across EC2, S3, IAM, Lambda, and VPC for enterprise customers. Partnered with Core Service Engineering on systemic RCA, then automated the diagnostics we kept repeating — Python / Boto3, about 30% less manual triage.',
+    title: 'Cloud Engineer intern',
+    meta: 'AWS · Winter 2023',
+    line: 'High-severity EC2 / S3 / IAM / Lambda / VPC; automated recurring triage (~30% less manual work).',
   },
   {
-    title: 'Fixed-income platform, Citi intern',
-    meta: 'Mississauga · Summer 2022',
-    line: 'Full-stack analytics on a multi-billion-dollar trading platform: Spring Boot, Angular, real-time retrieval, multi-party institutional reporting, and tracing on the paths traders actually wait on.',
+    title: 'Fixed-income platform co-op',
+    meta: 'Citi · Summer 2022',
+    line: 'Full-stack analytics on a multi-billion-dollar trading platform.',
   },
   {
-    title: 'World Life Expectancy (D3)',
-    meta: 'UBC · D3.js',
-    line: 'Interactive dashboard — map, year scrubber, and linked scatterplots for global life expectancy.',
+    title: 'AI Analyst',
+    meta: 'BC Cancer · 2022–23',
+    line: 'DICOM mammograms, OpenCV segmentation, structured reports for early-detection research pipelines.',
+  },
+  {
+    title: 'ML Engineer co-op',
+    meta: 'ICCRC · 2022',
+    line: 'Dark-web risk tooling with Random Forest and network analysis, alongside law-enforcement partners.',
+  },
+  {
+    title: 'World Life Expectancy',
+    meta: 'UBC · D3',
+    line: 'Interactive map, year scrubber, and linked scatterplots.',
     demoImage: '/assets/work/life-expectancy.gif',
     demoImageAlt: 'Animated preview of the World Life Expectancy D3 dashboard',
   },
   {
     title: 'Machine Learning Web App',
-    meta: 'UBC · Freshman year · Jan 2020 · 3 days',
-    line: 'End-to-end ML web app built in three days, before GPT existed.',
+    meta: 'UBC · Jan 2020',
+    line: 'End-to-end ML web app in three days, before GPT.',
     demoImage: '/assets/work/ml-web-app.gif',
     demoImageAlt: 'Animated preview of the machine learning web app',
   },
@@ -236,15 +294,15 @@ export const CONTACT = {
   githubLabel: 'github.com/SukiCai',
   linkedin: 'https://www.linkedin.com/in/sukicai/',
   linkedinLabel: 'linkedin.com/in/sukicai',
-  line: 'Based in New York, open to relocation. If you are rebuilding something that outgrew its first architecture — or hiring for that kind of work — I would like to hear about it.',
+  line: 'Based in New York, open to relocation. If you are building something without a playbook — or hiring for that kind of mind — I would like to hear about it.',
 }
 
 export const HERO = {
   name: "Hi, I'm Suki",
   headline: 'Software Engineer at Munich Re · New York',
-  subhead: 'M.S. Software Engineering, UC Berkeley · B.S. CS & Statistics, UBC',
+  subhead: 'M.S. Software Engineering & Molecular Science, UC Berkeley · B.S. CS & Statistics, UBC',
   typewriter:
-    'I build backend systems and rebuild the ones that stopped working. Open to conversations about architecture, AI-assisted engineering, and early-stage teams.',
+    'More than a software engineer — cancer imaging, dark-web ML, HCI, underwriting rebuilds, and decision agents without a playbook. Open to people building the same way.',
   pills: [
     { href: '#work', label: 'Selected work', external: false },
     { href: '#notes', label: 'Notes', external: false },

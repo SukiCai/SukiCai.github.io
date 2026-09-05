@@ -60,12 +60,22 @@ export function About() {
 
         <ol className="about-path">
           {ABOUT.path.map((beat) => (
-            <li key={`${beat.when}-${beat.where}`}>
+            <li key={beat.when} className={beat.lanes.length > 1 ? 'about-path-parallel' : undefined}>
               <span className="about-path-when">{beat.when}</span>
-              <span className="about-path-body">
-                <strong>{beat.where}</strong>
-                <span>{beat.what}</span>
-              </span>
+              <div className="about-path-lanes">
+                {beat.lanes.length > 1 && (
+                  <span className="about-path-parallel-label">in parallel</span>
+                )}
+                {beat.lanes.map((lane) => (
+                  <div className="about-path-lane" key={`${beat.when}-${lane.where}-${lane.kind}`}>
+                    <div className="about-path-lane-head">
+                      <strong>{lane.where}</strong>
+                      {lane.kind && <span className="about-path-kind">{lane.kind}</span>}
+                    </div>
+                    <span>{lane.what}</span>
+                  </div>
+                ))}
+              </div>
             </li>
           ))}
         </ol>
